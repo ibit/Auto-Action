@@ -1,0 +1,4 @@
+window.addEventListener('scroll', function() {
+    var arr = document.querySelectorAll('*[data-testid="like"]');
+    arr.forEach(like => like.click());
+});
