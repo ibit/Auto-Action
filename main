@@ -1,0 +1,19 @@
+// スクロール速度（ピクセル/秒）
+const scrollSpeed = 50; 
+
+// スクロールを開始する関数
+function startScroll() {
+    // 現在のスクロール位置
+    let currentPosition = window.scrollY;
+    
+    // スクロールのループ
+    const scrollInterval = setInterval(function() {
+        // スクロール位置を更新
+        currentPosition += 1;
+        // ページをスクロール
+        window.scrollTo(0, currentPosition);
+    }, 1000 / scrollSpeed); // スクロール速度に合わせてインターバルを設定
+}
+
+// スクロールを開始
+startScroll();
