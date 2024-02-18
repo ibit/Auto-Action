@@ -1,0 +1,19 @@
+// scroll speed
+const scrollSpeed = 50; 
+
+// start function
+function startScroll() {
+    // location
+    let currentPosition = window.scrollY;
+    
+    // loop
+    const scrollInterval = setInterval(function() {
+        // location update
+        currentPosition += 1;
+        // scroll
+        window.scrollTo(0, currentPosition);
+    }, 1000 / scrollSpeed); 
+}
+
+// start
+startScroll();
