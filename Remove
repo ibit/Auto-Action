@@ -1,0 +1,40 @@
+javascript:(function(){
+// スクロールの速度を指定 (数値が小さいほど速い)
+const scrollSpeed = 50;
+
+function startScroll() {
+  let currentPosition = window.scrollY;
+
+  const scrollInterval = setInterval(function() {
+    currentPosition += 1;
+    window.scrollTo(0, currentPosition);
+  }, 1000 / scrollSpeed);
+}
+
+startScroll();
+
+window.addEventListener('scroll', function() {
+  var deleteButtons = document.querySelectorAll('*[aria-label="もっと見る"]');
+  deleteButtons.forEach(button => {
+    button.click(); 
+
+    setTimeout(() => {
+      var deleteOption = Array.from(document.querySelectorAll('div[role="menuitem"]')).find(item => item.innerText.includes("削除")); 
+      if (deleteOption) {
+        deleteOption.click(); 
+
+        setTimeout(() => {
+          var confirmDelete = document.querySelector('*[data-testid="confirmationSheetConfirm"]'); 
+          if (confirmDelete) {
+            confirmDelete.click(); 
+
+            setTimeout(() => {
+              console.log('投稿が削除されました');
+            }, 1000); 
+          }
+        }, 500); 
+      }
+    }, 500); 
+  });
+});
+})();
